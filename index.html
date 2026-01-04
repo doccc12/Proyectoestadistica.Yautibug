@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto de Estadística</title>
+    
+    <link rel="shortcut icon" href="img/icons8-barril-de-petróleo-32.png">
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2a7173">
+</head>
+<div id="modalAviso" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#4DB6AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <h2 class="modal-title">Importante</h2>
+                <span class="close-modal-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Este proyecto tiene un carácter exclusivamente académico y se encuentra en continuo desarrollo. Los datos y análisis presentados se utilizan únicamente con fines educativos y no deben considerarse como asesoramiento profesional.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btnEntendido" class="btn-modal">Entendido</button>
+            </div>
+        </div>
+    </div>
+<body>
+    <header id="main-header">
+        <div class="logo-contenedor">
+        <img src="img/figemppa.webp 2x" alt="Logo FIG-MPA" class="logo-img">
+    </div>
+        <nav>
+            <a onclick="navegar('inicio', this)" class="menu-link activo">Inicio</a>
+            <a onclick="navegar('descriptiva', this)" class="menu-link">Estadística Descriptiva</a>
+            <a onclick="navegar('inferencial', this)" class="menu-link">Estadística Inferencial</a>
+            <a onclick="navegar('machine', this)" class="menu-link">Machine Learning</a>
+            <div class="dropdown-container">
+    <a class="menu-link btn-mas">Más ▾</a>
+    <div class="dropdown-content">
+        <a onclick="navegar('herramientas', this)">Herramientas Usadas</a>
+        <a onclick="navegar('conclusiones', this)">Conclusiones</a>
+        <a onclick="navegar('nosotros', this)">Sobre Nosotros</a>
+    </div>
+</div>
+        </nav>
+    </header>
+
+    <main>
+        
+        <div id="vista-inicio" class="vista-seccion">
+            
+            <section id="banner-video">
+                <div class="capa-oscura"></div>
+                <video id="videoPrincipal" muted autoplay loop>
+                    <source src="video/606824-cities-city-3840x2160_RGiVdQ2Y (6).mp4" type="video/mp4">
+                </video>
+                <div class="titulo-video">
+                    <h1>Proyecto de Estadística</h1>
+                    <h2>Producción de petróleo y gas en Brasil</h2>
+                </div>
+            </section>
+
+            <section class="contenedor sobre-nosotros">
+                <div class="contenedor-sobre-nosotros">
+                    <img class="imagen-about-us" src="img/oil-price_6428610.png" alt="Barril Petróleo">
+
+                    <div class="contenido-textos">
+                        <h3><span>1</span> Planteamiento del Problema</h3>
+                        <p>
+                            La información sobre la exploración y explotación de hidrocarburos en Brasil es dispersa, lo que dificulta entender su evolución espacial y temporal. Se requiere un análisis estadístico que organice los datos históricos (1940–2018) para identificar patrones y apoyar la planificación energética.
+                        </p>
+
+                        <a href="https://www.kaggle.com/datasets/dtommasini/oil-gas-wells-brazil" target="_blank" class="dataset-box">Dataset</a>
+
+                        <h3><span>2</span> Objetivo General</h3>
+                        <p>
+                            Aplicar herramientas estadísticas y de Machine Learning para analizar actividades de exploración y/o explotación de hidrocarburos en Brasil mediante herramientas computacionales
+                        </p>
+
+                        <h3><span>3</span> Objetivo Específico</h3>
+                        <p><strong>1.</strong>Conocer la situación actual sobre la exploración y explotación de hidrocarburos en Brasil, a través de sus características más importantes y medidas estadísticas</p>
+                        <p><strong>2.</strong>Emplear un modelo de probabilidad para estables conclusiones de la exploración y explotación de hidrocarburos en Brasil a partir de los resultados de la muestra.</p>
+                        <p><strong>3.</strong>Deducir relaciones entre variables de la exploración y explotación de hidrocarburos en Brasil con el fin de realizar estimaciones.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="mapa" class="mapa-ubicacion">
+                <div class="lado-izquierdo">
+                    <h1 class="titulo-mapa efecto-entrada">Mapa de Ubicación</h1>
+                    <a href="https://drive.google.com/file/d/1uCnNk0kce1kmHP1u9RcKJM4tA_cr8r5K/view?usp=sharing"
+                       class="btn-mapa"
+                       target="_blank">
+                        MAPA DE UBICACIÓN EN PDF
+                    </a>
+                </div>
+                <div class="lado-derecho">
+                    <img src="img/WhatsApp Image 2025-12-11 at 2.34.45 PM.jpeg" alt="Mapa Brasil">
+                </div>
+            </section>
+            </section> 
+            <section class="seccion-mapa-interactivo">
+                <div class="contenedor">
+                    <h2 class="titulo-interactivo" style="text-align: center; color: #2a7173; margin-top: 40px;">
+                        EXPLORA EL MAPA DETALLADO
+                    </h2>
+                    
+                    <div class="marco-mapa" style="margin-top: 20px; height: 600px; border: 2px solid #2a7173; border-radius: 10px; overflow: hidden;">
+                        
+                        <iframe src="mapa_web/index.html" style="width: 100%; height: 100%; border: none;"></iframe>
+                        
+                    </div>
+                </div>
+            </section>
+
+        </div><section id="vista-descriptiva" class="vista-seccion oculto">
+    
+    <div class="banner-video-general">
+        <div class="capa-oscura"></div>
+        <video id="videoDescriptiva" muted loop>
+            <source src="video/606824-cities-city-3840x2160_RGiVdQ2Y (6).mp4" type="video/mp4">
+        </video>
+        <div class="titulo-video">
+        <h1>Estadística Descriptiva</h1>
+    </div>
+    </div> 
+
+    <div class="fondo-gris-ancho">
+        
+        <div class="contenedor contenedor-flex-descriptiva-layout">
+        
+            <div class="izquierda-desc">
+                <h1 class="titulo-seccion-desc">📊 Conceptos Básicos</h1>
+
+                <div class="opcion-desc" onclick="toggleInfo('poblacion')">🌎 Población</div>
+                <div id="poblacion" class="info-desc">
+                    <b>Textual:</b> Todas las porciones de subsuelo del territorio de Brasil susceptibles de actividades de exploración y/o explotación de hidrocarburos.<br><br>
+                    <b>Simbólico:</b>
+                    <div class="simbolico">U = {x / x ∈ porciones de subsuelo ^ País(x) = “Brasil” ^ Apto(x) = "Hidrocarburos"}</div>
+                </div>
+
+                <div class="opcion-desc" onclick="toggleInfo('individuo')">🛢️ Individuo</div>
+                <div id="individuo" class="info-desc">
+                    <b>Textual:</b> Cada porción de subsuelo ubicada en Brasil que cumple criterios de aptitud para hidrocarburos.<br><br>
+                    <b>Simbólico:</b>
+                    <div class="simbolico">Xᵢ = 1, 2, 3, …, n<br>n = 29,575</div>
+                </div>
+
+                <div class="opcion-desc" onclick="toggleInfo('muestra')">🧮 Muestra</div>
+                <div id="muestra" class="info-desc">
+                    <b>Textual:</b> Conjunto de todas las porciones de subsuelo en Brasil donde se realizaron actividades de exploración o explotación desde 1940 hasta 2018.<br><br>
+                    <b>Simbólico:</b>
+                    <div class="simbolico">M = { x | x ∈ Porciones ∧ pais(x) = "Brasil" ^ Apto(x) = "Hidrocarburos", 1940 ≤ año(x) ≤ 2018 }</div>
+                </div>
+                <div class="opcion-desc" onclick="toggleInfo('Caso')">📓 Caso de Estudio</div>
+                <div id="Caso" class="info-desc">
+                    <b>Textual:</b>Cada una de las porciones de subsuelo de Brasil que registran actividades de exploración o explotación de hidrocarburos entre 1940 y 2018.<br><br>
+                    <b>Simbólico:</b>
+                    <div class="simbolico">Xi ∈ M     i = 1, 2, 3, …, n     n = 29575</div>
+                </div>
+            </div>
+
+            <div class="derecha-desc">
+                <img src="img/brazilplata.jpg" alt="Imagen Descriptiva">
+            </div>
+        </div>
+    </div>
+
+    <div class="contenedor seccion-tabla">
+        <h1 class="variables-titulo">TABLA DE VARIABLES</h1>
+        
+        <div class="leyenda-tabla">
+            <div class="item-leyenda"><span class="color color1"></span> IDENTIFICACIÓN Y LOCALIZACIÓN</div>
+            <div class="item-leyenda"><span class="color color2"></span> TIEMPOS Y COORDINADAS</div>
+            <div class="item-leyenda"><span class="color color3"></span> PROFUNDIDAD Y GEOLOGÍA</div>
+            <div class="item-leyenda"><span class="color color4"></span> DISPONIBILIDAD DE DATOS</div>
+        </div>
+
+        <div id="buscador-container">
+            <input type="text" id="filtroTexto" placeholder="🔍 Buscar variable..." onkeyup="filtrarTabla()">
+            <select id="filtroTipo" onchange="filtrarTabla()">
+                <option value="">Filtrar por tipo…</option>
+                <option value="cualitativa">Cualitativa</option>
+                <option value="cuantitativa">Cuantitativa</option>
+            </select>
+        </div>
+
+        <div id="tabla-contenedor">
+            <table id="tablaVariables">
+                <thead>
+                    <tr>
+                        <th onclick="ordenarTabla(0)">NOMBRE ORIGINAL ⇅</th>
+                        <th onclick="ordenarTabla(1)">NOMBRE ⇅</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>TIPO</th>
+                        <th>SUBTIPO</th>
+                        <th>DOMINIO</th>
+                        <th>RANGO</th>
+                        <th>INSTRUMENTO</th>
+                        <th>UNIDAD</th>
+                        <th>ESCALA</th>
+                    </tr>
+                </thead>
+        <tbody>
+            <tr><td>POCO (Texto)</td><td>POZO</td><td>Identificador único del pozo.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Σ∗}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte ANP</td><td>Ninguna</td><td>Nominal</td>
+            <tr><td>CATASTRO (Numérico)</td><td>CATASTRO</td><td>Número de registro catastral oficial.</td><td>Cuantitativa</td><td>Discreta</td><td>D={x∣x∈Z+}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte ANP</td><td>Ninguna</td><td>Nominal</td>
+            <tr><td>OPERADOR (Texto)</td><td>OPERADOR</td><td>Nombre de la empresa operadora.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Nombres de Compañías}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte ANP</td><td>Ninguna</td><td>Nominal</td>
+            <tr><td>POCO_OPERADOR (Texto)</td><td>POZO_OPERADOR</td><td>Código de identificación interna del pozo.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Σ∗}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Interno</td><td>Ninguna</td><td>Nominal</td>
+            <tr><td>ESTADO (Texto)</td><td>ESTADO</td><td>Unidad federativa de Brasil (Estado).</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Coˊdigos de Estados}</td><td>R⊂D∪{hoja_de_datos}</td><td>Georreferencia</td><td>Ninguna</td><td>Nominal</td>
+            <tr><td>BACIA (Texto)</td><td>CUENCA</td><td>Cuenca sedimentaria de ubicación.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Nombres de Cuencas}</td><td>R⊂D∪{hoja_de_datos}</td><td>Geología</td><td>Ninguna</td><td>Nominal</td>
+            <tr><td>BLOCO (Texto)</td><td>BLOQUE</td><td>Bloque de concesión de exploración.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Coˊdigos de Bloque}</td><td>R⊂D∪{hoja_de_datos}</td><td>Contrato ANP</td><td>Ninguna</td><td>Nominal</td>
+            <tr><td>SIG_CAMPO (Texto)</td><td>SIGLAS_CAMPO</td><td>Siglas o código del campo de producción.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Siglas de Campo}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte ANP</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>CAMPO (Texto)</td><td>CAMPO</td><td>Nombre completo del campo de producción.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Nombres de Campo}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte ANP</td><td>Ninguna</td><td>Nominal</td></tr>
+           <tr><td>TERRA_MAR (Texto)</td><td>TIERRA_MAR</td><td>Indica si el pozo es Tierra (T) o Mar (M).</td><td>Cualitativa</td><td>Nominal</td><td>D={’TERRA’, ’MAR’}</td><td>R⊂D∪{hoja_de_datos}</td><td>Observación</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>POCO_POS_ANP (Texto)</td><td>POZO_POSICIÓN_ANP</td><td>Clasificación oficial de la posición del pozo según la ANP.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Clasificaciones ANP}</td><td>R⊂D∪{hoja_de_datos}</td><td>Clasif. ANP</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>TIPO (Texto)</td><td>TIPO</td><td>Clasificación funcional (Ej. Exploración, Producción, Inyección).</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Tipos de Pozo}</td><td>R⊂D∪{hoja_de_datos}</td><td>Clasif. ANP</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>CATEGORÍA (Texto)</td><td>CATEGORÍA</td><td>Clasificación o estatus general del pozo.</td><td>Cualitativa</td><td>Ordinal</td><td>D={x∣x∈Categorías}</td><td>R⊂D∪{hoja_de_datos}</td><td>Clasif. ANP</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>RECLASIFICACAO (Texto)</td><td>RECLASIFICACIÓN</td><td>Detalle o nueva clasificación del pozo, si aplica.</td><td>Cualitativa</td><td>Ordinal</td><td>D={x∣x∈Clasificaciones Secundarias}</td><td>R⊂D∪{hoja_de_datos}</td><td>Clasif. ANP</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>SITUAÇÃO (Texto)</td><td>SITUACIÓN</td><td>Estado actual (Ej. Activo, Abandonado, Suspendido).</td><td>Cualitativa</td><td>Ordinal</td><td>D={x∣x∈Estados de Operación}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Operacional</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>INICIO (Fecha)</td><td>INICIO</td><td>Fecha de inicio de la perforación.</td><td>Cuantitativa</td><td>Discreta (Fecha)</td><td>D={x∣x∈DD/MM/AAAA}</td><td>R⊂D∪{hoja_de_datos}</td><td>Diario Perforación</td><td>Fecha</td><td>Intervalo</td>
+           <tr><td>TERMINO (Fecha)</td><td>TÉRMINO</td><td>Fecha de finalización de la perforación.</td><td>Cuantitativa</td><td>Discreta (Fecha)</td><td>D={x∣x∈DD/MM/AAAA}</td><td>R⊂D∪{hoja_de_datos}</td><td>Diario Perforación</td><td>Fecha</td><td>Intervalo</td>
+           <tr><td>CONCLUSÃO (Fecha)</td><td>CONCLUSIÓN</td><td>Fecha de conclusión o reporte final.</td><td>Cuantitativa</td><td>Discreta (Fecha)</td><td>D={x∣x∈DD/MM/AAAA}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Final</td><td>Fecha</td><td>Intervalo</td>
+           <tr><td>TITULARIDADE (Texto)</td><td>TITULARIDAD</td><td>Entidad o empresa que posee los derechos.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Entidades Propietarias}</td><td>R⊂D∪{hoja_de_datos}</td><td>Contrato ANP</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>LATITUD_BASE_4C (Numérico)</td><td>LATITUD_BASE_4C</td><td>Latitud de la base (en 4 decimales).</td><td>Cuantitativa</td><td>Continua</td><td>D={x∣x∈R∧−90≤x≤90}</td><td>R⊂D∪{hoja_de_datos}</td><td>GPS/Topografía</td><td>Grados (∘)</td><td>Intervalo</td>
+           <tr><td>LONGITUD_BASE_4C (Numérico)</td><td>LONGITUD_BASE_4C</td><td>Longitud de la base (en 4 decimales).</td><td>Cuantitativa</td><td>Continua</td><td>D={x∣x∈R∧−180≤x≤180}</td><td>R⊂D∪{hoja_de_datos}</td><td>GPS/Topografía</td><td>Grados (∘)</td><td>Intervalo</td>
+           <tr><td>LATITUD_BASE_DD (Numérico)</td><td>LATITUD_BASE_GD</td><td>Latitud de la base (en grados decimales).</td><td>Cuantitativa</td><td>Continua</td><td>D={x∣x∈R∧−90≤x≤90}</td><td>R⊂D∪{hoja_de_datos}</td><td>GPS/Topografía</td><td>Grados (∘)</td><td>Intervalo</td>
+           <tr><td>LONGITUD_BASE_DD (Numérico)</td><td>LONGITUD_BASE_GD</td><td>Longitud de la base (en grados decimales).</td><td>Cuantitativa</td><td>Continua</td><td>D={x∣x∈R∧−180≤x≤180}</td><td>R⊂D∪{hoja_de_datos}</td><td>GPS/Topografía</td><td>Grados (∘)</td><td>Intervalo</td>
+           <tr><td>DATO_HORIZONTAL (Texto)</td><td>DATUM_HORIZONTAL</td><td>Sistema de referencia geodésico horizontal.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Sistemas Geodésicos}</td><td>R⊂D∪{hoja_de_datos}</td><td>Georreferencia</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>TIPO DE COORDENADA BASE (Texto)</td><td>TIPO DE COORDENADA BASE</td><td>Tipo de sistema de coordenadas base utilizado.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Tipos de Coordenada}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte ANP</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>DIRECÃO (Texto)</td><td>DIRECCIÓN</td><td>Tipo de perforación (Vertical, Direccional, Horizontal).</td><td>Cualitativa</td><td>Nominal</td><td>D={’V’, ’D’, ’H’, ’L’}</td><td>R⊂D∪{hoja_de_datos}</td><td>Ingeniería</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>PROFUNDIDADE_VERTICAL_M (Numérico)</td><td>PROFUNDIDAD_VERTICAL_M</td><td>Profundidad vertical verdadera (TVD).</td><td>Cuantitativa</td><td>Continua</td><td>D={x∣x∈R,x≥0}</td><td>R⊂D∪{hoja_de_datos}</td><td>Sonda (MWD/LWD)</td><td>Metros (m)</td><td>Intervalo</td>
+           <tr><td>PROFUNDIDADE_SONDADOR_M (Numérico)</td><td>PROFUNDIDAD_SONDADORA_M</td><td>Profundidad registrada por la herramienta de sondeo.</td><td>Cuantitativa</td><td>Continua</td><td>D={x∣x∈R,x≥0}</td><td>R⊂D∪{hoja_de_datos}</td><td>Sonda</td><td>Metros (m)</td><td>Intervalo</td>
+           <tr><td>PROFUNDIDADE_MEDIDA_M (Numérico)</td><td>PROFUNDIDAD_MEDIDA_M</td><td>Profundidad total medida (MD).</td><td>Cuantitativa</td><td>Continua</td><td>D={x∣x∈R,x≥0}</td><td>R⊂D∪{hoja_de_datos}</td><td>Sonda (TVD/MD)</td><td>Metros (m)</td><td>Intervalo</td>
+           <tr><td>REFERENCIA_DE_PROFUNDIDADE (Texto)</td><td>REFERENCIA_DE_PROFUNDIDAD</td><td>Punto de referencia para las mediciones de profundidad.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Puntos de Referencia}</td><td>R⊂D∪{hoja_de_datos}</td><td>Topografía</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>MESA ROTATIVA (Numérico)</td><td>MESA ROTATORIA</td><td>Elevación de la mesa rotatoria.</td><td>Cuantitativa</td><td>Continua</td><td>D={x∣x∈R}</td><td>R⊂D∪{hoja_de_datos}</td><td>Topografía</td><td>Metros (m)</td><td>Intervalo</td>
+           <tr><td>COTA_ALTIMETRICA_M (Numérico)</td><td>COTA_ALTIMÉTRICA_M</td><td>Altitud o elevación del pozo.</td><td>Cuantitativa</td><td>Continua</td><td>D={x∣x∈R}</td><td>R⊂D∪{hoja_de_datos}</td><td>Topografía</td><td>Metros (m)</td><td>Intervalo</td>
+           <tr><td>LÁMINA DE ÁGUA M (Numérico)</td><td>LÁMINA DE AGUA M</td><td>Profundidad del agua (solo pozos marinos).</td><td>Cuantitativa</td><td>Continua</td><td>D={x∣x∈R,x≥0}</td><td>R⊂D∪{hoja_de_datos}</td><td>Sonda</td><td>Metros (m)</td><td>Intervalo</td>
+           <tr><td>DATO_VERTICAL (Texto)</td><td>DATUM_VERTICAL</td><td>Sistema de referencia geodésico vertical.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Sistemas Geodésicos Verticales}</td><td>R⊂D∪{hoja_de_datos}</td><td>Georreferencia</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>UNIDADE ESTRATIGRÁFICA (Texto)</td><td>UNIDAD ESTRATIGRÁFICA</td><td>Unidad geológica principal alcanzada.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Nombres de Unidades}</td><td>R⊂D∪{hoja_de_datos}</td><td>Geología</td><td>Ninguna</td><td>Nominal</td><td>
+           <tr><td>GEOLOGÍA_GRUPO_FINAL (Texto)</td><td>GEOLOGÍA_GRUPO_FINAL</td><td>Clasificación geológica: Grupo al final del pozo.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Nombres de Grupos}</td><td>R⊂D∪{hoja_de_datos}</td><td>Geología</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>GEOLOGÍA_FORMACIÓN_FINAL (Texto)</td><td>GEOLOGÍA_FORMACIÓN_FINAL</td><td>Clasificación geológica: Formación al final del pozo.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Nombres de Formaciones}</td><td>R⊂D∪{hoja_de_datos}</td><td>Geología</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>GEOLOGÍA_MEMBRO_FINAL (Texto)</td><td>GEOLOGÍA_MIEMBRO_FINAL</td><td>Clasificación geológica: Miembro al final del pozo.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Nombres de Miembros}</td><td>R⊂D∪{hoja_de_datos}</td><td>Geología</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>CDPE (Texto)</td><td>CDPE</td><td>Disponibilidad de Registros de Cable (Wireline Logs).</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>AGP (Texto)</td><td>AGP</td><td>Disponibilidad de datos de Perforación a Presión.</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>PC (Texto)</td><td>PC</td><td>Disponibilidad de Perfil de Caliper u otro perfil.</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>PAG (Texto)</td><td>PAG</td><td>Disponibilidad de Perfil de Densidad y Gaseosa.</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>PERFIS_CONVENCIONAIS (Texto)</td><td>PERFILES_CONVENCIONALES</td><td>Disponibilidad de registros geofísicos convencionales.</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>DURANTE_PERFURACAO (Texto)</td><td>DURANTE_PERFORACIÓN</td><td>Disponibilidad de datos durante la perforación (LWD/MWD).</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>PERFIS_DIGITAIS (Texto)</td><td>PERFILES_DIGITALES</td><td>Disponibilidad de registros en formato digital.</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>PERFIS_PROCESSADOS (Texto)</td><td>PERFILES_PROCESADOS</td><td>Disponibilidad de registros procesados.</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>PERFIS_ESPECIAIS (Texto)</td><td>PERFILES_ESPECIALES</td><td>Disponibilidad de registros geofísicos especiales.</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>AMOSTRA_LATERAL (Texto)</td><td>MUESTRA_LATERAL</td><td>Disponibilidad de muestras de pared (Side-wall Cores).</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>SÍSMICA (Texto)</td><td>SÍSMICA</td><td>Disponibilidad de datos sísmicos asociados.</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>TABELA_TEMPO_PROFUNDIDADE (Texto)</td><td>TABLA_TIEMPO_PROFUNDIDAD</td><td>Disponibilidad de la tabla de conversión tiempo-profundidad.</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>DADOS_DIRECIONAIS (Texto)</td><td>DATOS_DIRECIONALES</td><td>Disponibilidad de encuestas de pozo.</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>PRUEBA_A_CABO (Texto)</td><td>PRUEBA_A_CABLE</td><td>Disponibilidad de pruebas de formación de cable.</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>PRUEBA DE FORMACÃO (Texto)</td><td>PRUEBA DE FORMACIÓN</td><td>Disponibilidad de pruebas de integridad o producción.</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>.
+           <tr><td>CANHONEIO (Texto)</td><td>CAÑONEO</td><td>Disponibilidad de registros o acciones de cañoneo.</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>TESTEMUNHO (Texto)</td><td>TESTIGO (CORE)</td><td>Disponibilidad de muestras de roca (cores).</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>GEOQUÍMICA (Texto)</td><td>GEOQUÍMICA</td><td>Disponibilidad de análisis geoquímicos.</td><td>Cualitativa</td><td>Nominal</td><td>D={'S', 'N', 'NULL'}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Técnico</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>SIG_SONDA (Texto)</td><td>SIGLAS_SONDA</td><td>Siglas o código de la sonda/equipo de perforación.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Coˊdigos de Sonda}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Operacional</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>NOM_SONDA (Texto)</td><td>NOMBRE_SONDA</td><td>Nombre del equipo de perforación.</td><td>Cualitativa</td><td>Nominal</td><td>D={x∣x∈Nombres de Sonda}</td><td>R⊂D∪{hoja_de_datos}</td><td>Reporte Operacional</td><td>Ninguna</td><td>Nominal</td>
+           <tr><td>DHA_ATUALIZAÇÃO (Fecha)</td><td>FECHA_ACTUALIZACIÓN</td><td>Fecha de la última actualización del registro del pozo.</td><td>Cuantitativa</td><td>Discreta (Fecha)</td><td>D={x∣x∈DD/MM/AAAA}</td><td>R⊂D∪{hoja_de_datos}</td><td>Registro de Sistema</td><td>Fecha</td><td>Intervalo</td>
+        </tbody>
+            </table>        
+        </div>
+        <div class="contenedor seccion-tabla" style="margin-top: 50px;">
+    
+    <h1 class="variables-titulo">MÉTRICAS ESTADÍSTICAS</h1>
+    <div class="leyenda-banda">
+        
+        <div class="item-leyenda">
+            <span class="cuadrito azul-claro"></span> 
+            IDENTIFICACIÓN Y LOCALIZACIÓN
+        </div>
+
+        <div class="item-leyenda">
+            <span class="cuadrito amarillo-claro"></span> 
+            TIEMPOS Y COORDINADAS
+        </div>
+
+        <div class="item-leyenda">
+            <span class="cuadrito rojo-claro"></span> 
+            PROFUNDIDAD Y GEOLOGÍA
+        </div>
+
+        <div class="item-leyenda">
+            <span class="cuadrito verde-claro"></span> 
+            DISPONIBILIDAD DE DATOS
+        </div>
+
+    </div>
+    <p style="text-align: center; margin-bottom: 20px; color: #666;">
+        Resumen de Rango, Media y Mediana según el tipo de variable.
+    </p>
+
+    <div class="tabla-contenedor-scroll">
+        <table class="tabla-excel">
+            <thead>
+                <tr>
+                    <th>NOMBRE ORIGINAL</th>
+                    <th>RANGO [Min:Max]</th>
+                    <th>MEDIA (x̄)</th>
+                    <th>MEDIANA (Me)</th>
+                    <th>MODA (Mo)</th>
+                    <th>VARIANZA (S²)</th>
+                    <th>DESV. EST. (S)</th>
+                    <th>C. V (%)</th>
+                    <th>ASIMETRÍA (As)</th>
+                    <th>CURTOSIS (K)</th>
+                    <th>VALORES ATÍPICOS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="fila-identificacion">
+                    <td>OPERADOR (Texto)</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Empresa Nacional Estatal</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td>
+
+                </tr>
+                <tr class="fila-identificacion">
+                    <td>ESTADO (Texto)</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Nordeste</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td>
+                </tr>
+                <tr class="fila-tiempos">
+                    <td><strong>BACIA (Texto)</strong></td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Cuencas del Nordeste</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td>
+                </tr>
+                <tr class="fila-tiempos">
+                    <td><strong>BLOCO (Texto)</strong></td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td>
+                </tr>
+                <tr class="fila-tiempos">
+                    <td><strong>CONCLUSÃO (Fecha)</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+                </tr>
+                <tr class="fila-tiempos">
+                    <td>TITULARIDADE (Texto)</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+
+                <tr class="fila-profundidad">
+                    <td><strong>PROFUNDIDADE_VERTICAL_M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>PROFUNDIDADE_SONDADOR_M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>MESA ROTATIVA</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>COTA_ALTIMETRICA_M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+                </tr>
+                <tr class="fila-profundidad">
+                    <td><strong>LÁMINA DE ÁGUA M</strong></td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td><td>2012</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+                <div class="contenedor seccion-galeria">
+
+                    <h1 class="titulo-galeria">Variables Cualitativas</h1>
+                    
+                    <div class="grupo-variables">
+                        <h3 class="subtitulo-galeria">Nominales</h3>
+                        <div class="grid-cards">
+                            <a href="https://rpubs.com/Anahi_Macias/1382340" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/estados.jpg" alt="Pozo"></div>
+                                <div class="card-texto">Estado</div>
+                            </a>
+                            <a href="https://rpubs.com/Anahi_Macias/1382343" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/tipo.jpg" alt="Operador"></div>
+                                <div class="card-texto">TIPO</div>
+                            </a>
+                            <a href="https://rpubs.com/Anahi_Macias/1382336" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/titularidad.jpg" alt="Cuenca"></div>
+                                <div class="card-texto">TITULARIDAD</div>
+                            </a>
+                            <a href="https://rpubs.com/BENJAMINIVAN/1378366" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/operador2.jpeg" alt="Tierra/Mar"></div>
+                                <div class="card-texto">OPERADOR</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="grupo-variables">
+                        <h3 class="subtitulo-galeria">Ordinales</h3>
+                        <div class="grid-cards">
+                            <a href="https://rpubs.com/BENJAMINIVAN/1382328" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/petroleo-barril.jpg" alt="Var"></div>
+                                <div class="card-texto">CATEGORIA</div>
+                            </a>
+                            <a href="https://rpubs.com/Anahi_Macias/1382321" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/situacion.jpeg" alt="Var"></div>
+                                <div class="card-texto">SITUACIÓN</div>
+                            </a>
+                            <a href="https://rpubs.com/Anahi_Macias/1382583" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/reclasificacion1.jpg" alt="Var"></div>
+                                <div class="card-texto">RECLASIFICACION</div>
+                            </a>
+                            <a href="#" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/placeholder1.jpg" alt="Var"></div>
+                                <div class="card-texto">ORDINAL 4</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <h1 class="titulo-galeria mt-grande">Variables Cuantitativas</h1>
+
+                    <div class="grupo-variables">
+                        <h3 class="subtitulo-galeria">Discretas</h3>
+                        <div class="grid-cards">
+                            <a href="https://rpubs.com/edyautibug12/1382686" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/peroracion.jpg" alt="Var"></div>
+                                <div class="card-texto">INICIO (Fecha)</div>
+                            </a>
+                            <a href="https://rpubs.com/edyautibug12/1382703" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/termino.avif" alt="Var"></div>
+                                <div class="card-texto">TÉRMINO (Fecha)</div>
+                            </a>
+                            <a href="https://rpubs.com/edyautibug12/1382717" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/calendario.jpg" alt="Var"></div>
+                                <div class="card-texto">CONCLUSIÓN</div>
+                            </a>
+                            <a href="#" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/calendario.jpg" alt="Var"></div>
+                                <div class="card-texto">ACTUALIZACIÓN</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="grupo-variables">
+                        <h3 class="subtitulo-galeria">Continuas</h3>
+                        <div class="grid-cards">
+                            <a href="https://rpubs.com/Denis_Alexander/1380610" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/perforacion-direccional.webp"></div>
+                                <div class="card-texto">PROF. VERTICAL</div>
+                            </a>
+                            <a href="https://rpubs.com/Denis_Alexander/1380632" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/SONDADORA.jpg"></div>
+                                <div class="card-texto">PROF. SONDADORA</div>
+                            </a>
+                            <a href="https://rpubs.com/Denis_Alexander/1380917" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/correlacion-registros.webp"></div>
+                                <div class="card-texto">COTA ALIMETRICA</div>
+                            </a>
+                            <a href="https://rpubs.com/Denis_Alexander/1380924" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/laminaagua.jpg"></div>
+                                <div class="card-texto">LAMINA DE AGUA</div>
+                            </a>
+                            <a href="https://rpubs.com/Denis_Alexander/1380954" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/placeholder3.jpg"></div>
+                                <div class="card-texto">MESA ROTATORIA</div>
+                            </a>
+                            <a href="#" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/placeholder3.jpg"></div>
+                                <div class="card-texto">COTA ALTIMÉTRICA</div>
+                            </a>
+                            <a href="#" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/placeholder3.jpg"></div>
+                                <div class="card-texto">LÁMINA DE AGUA</div>
+                            </a>
+                            <a href="#" class="card-variable" target="_blank">
+                                <div class="card-img"><img src="img/placeholder3.jpg"></div>
+                                <div class="card-texto">PROF. SONDA</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vista-inferencial" class="seccion-interna oculto">
+            <div class="contenedor">
+                <h1>Estadística Inferencial</h1>
+                <p>en construccion.....</p>
+            </div>
+        </section>
+
+        <section id="vista-machine" class="seccion-interna oculto">
+            <div class="contenedor">
+                <h1>Machine Learning</h1>
+                <p>en construccion....</p>
+            </div>
+        </section>
+
+        <section id="vista-herramientas" class="seccion-interna oculto">
+            <div class="contenedor">
+                <h1 class="titulo-seccion-mas">Herramientas Tecnológicas</h1>
+                <p>Softwares</p>
+                <div class="grid-cards">
+                    <div class="card-variable" style="height: 150px;">
+                        <div class="card-texto" style="position:relative; height:100%; display:flex; align-items:center; justify-content:center; background:#2a7173;">
+                            rstudio
+                        </div>
+                    </div>
+                    <div class="card-variable" style="height: 150px;">
+                        <div class="card-texto" style="position:relative; height:100%; display:flex; align-items:center; justify-content:center; background:#4DB6AC;">
+                            Por ahi
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vista-conclusiones" class="seccion-interna oculto">
+            <div class="contenedor">
+                <h1 class="titulo-seccion-mas">Conclusiones Finales</h1>
+                <ul class="lista-conclusiones" style="text-align: left; max-width: 800px; margin: auto; font-size: 18px;">
+                    <li>en construccion</li>
+                    <li>en construccion</li>
+                    <li>enconstrcucion </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="vista-nosotros" class="seccion-interna oculto">
+    <div class="contenedor">
+        <h1 class="titulo-seccion-mas">Sobre Nosotros</h1>
+        
+        <p style="text-align: center; margin-bottom: 30px;">
+            Haz clic en cada tarjeta para ver el CV completo.
+        </p>
+
+        <div class="contenedor-sobre-nosotros-grid">
+            
+            <a href="https://drive.google.com/file/d/1k7D6-jeG_RipM4FcvYkcml5B9lEozB7S/view?usp=sharing" target="_blank" class="caja-mas miembro-equipo">
+                <div class="icono-cv">📄</div>
+                <h3>Elkin Yautibug</h3>
+                <p>Estudiante</p>
+                <span class="ver-pdf">Ver PDF ➔</span>
+            </a>
+
+            <a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvYy82Nzc4NWYzMDc0ZDI2ZTE3L0lRQ1RoRW5RT2NndVNZSXlBcWRIQThmbUFjOXhfZHZZaGptWFRlUVBUbExXV0hFP2U9ekNiYUNV&cid=67785F3074D26E17&id=67785F3074D26E17%21sd0498493c839492e823202a74703c7e6&parId=67785F3074D26E17%21scb54649c0fdd43d087a397515eb2b248&o=OneUp" target="_blank" class="caja-mas miembro-equipo">
+                <div class="icono-cv">📄</div>
+                <h3>Anahi Macias</h3>
+                <p>Estudiante</p>
+                <span class="ver-pdf">Ver PDF ➔</span>
+            </a>
+
+            <a href="https://drive.google.com/file/d/182JFjIQ4B9nb172KaMJKeNlOHDVdrlhs/view" target="_blank" class="caja-mas miembro-equipo">
+                <div class="icono-cv">📄</div>
+                <h3>Denis</h3>
+                <p>Estudiante</p>
+                <span class="ver-pdf">Ver PDF ➔</span>
+            </a>
+
+            <a href="https://drive.google.com/file/d/109d6eSy5_1d6ql2hPtja9VotJJS-bqLd/view" target="_blank" class="caja-mas miembro-equipo">
+                <div class="icono-cv">📄</div>
+                <h3>Benjamin</h3>
+                <p>Estudiante</p>
+                <span class="ver-pdf">Ver PDF ➔</span>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer>
+        <div class="contenedor-footer">
+            <div class="content-foo">
+                <h4>Integrantes</h4>
+                <p>Elkin Yautibug</p>
+                <p>Anahi Macias</p>
+                <p>Denis Tercero</p>
+                <p>Benjamin Salazar</p>
+            </div>
+            <div class="content-foo">
+                <h4>Contacto</h4>
+                <p>0962569683</p> <p>Quito, Ecuador</p>
+            </div>
+            <div class="content-foo redes-sociales-footer">
+                <h4>Síguenos</h4>
+                <div class="iconos-container">
+                    <a href="https://www.instagram.com/figempa_uce?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="icono-red">
+                        <img src="img/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://www.facebook.com/Figempa/" target="_blank" class="icono-red">
+                        <img src="img/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="https://x.com/Figempa_UCE" target="_blank" class="icono-red">
+                        <img src="img/signo-de-twitter.png" alt="Twitter">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <h2 class="titulo-final">&copy; 2025 Proyecto de Estadística | FIGEMPA - UCE</h2>
+    </footer>
+
+    <script src="navegacion.js"></script>
+    <script src="observer.js"></script>
+    <script src="modal.js"></script>
+    <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="0KvCL-4xC7yfIElMOhv1h";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+</body>
+</html>
